@@ -1,5 +1,6 @@
 import React, { useContext, useEffect } from "react";
-import { Context } from "../store/appContext"
+import { Context } from "../store/appContext";
+import { Cardpeople } from "../component/Cardpeople.jsx";
 
 import "../../styles/home.css";
 
@@ -8,9 +9,10 @@ export const Home = () => {
 
     useEffect(() => {
         actions.loadSomePeople();
+		
     }, []);
 
-    console.log(store.listDetailsPeople?.result);
+    
 
     return (
         <div className="text-center mt-5">
@@ -20,18 +22,19 @@ export const Home = () => {
             ) : (
                 <div>
                     <h2>Detalles de las personas:</h2>
-                    <ul>
-                        {/* Mapear los detalles de las personas */}
+                    <div className="card-deck">
+                        {/* Mapear los detalles de las personas y renderizar Cardpeople para cada persona */}
                         {store.listDetailsPeople.map((person, index) => (
-                            <li key={index}>
-                                {/* Acceder a las propiedades dentro de "properties" */}
-                                <strong>Nombre:</strong> {person.result.properties.name}<br />
-                                <strong>Altura:</strong> {person.result.properties.height}<br />
-                                <strong>Masa:</strong> {person.result.properties.mass}<br />
-                                
-                            </li>
+                            <Cardpeople 
+                                key={index}
+								imgSrc={`https://starwars-visualguide.com/assets/img/characters/${person.uid}.jpg`}
+                                name={person.result.properties.name}
+                                height={person.result.properties.height}
+                                mass={person.result.properties.mass}
+                            />
+							
                         ))}
-                    </ul>
+                    </div>
                 </div>
             )}
         </div>
