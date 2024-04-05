@@ -1,7 +1,9 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-export const Cardpeople = ({ name, height, mass, imgSrc }) => (
-    <div className="card" style={{ width: "18rem" }}>
+export const Cardpeople = ({ name, height, mass, imgSrc, uid }) => (
+    
+    <div className="card " style={{ width: "18rem" }}>
           <img src={imgSrc} className="card-img-top" alt="..." />
         <div className="card-body">
             <h5 className="card-title">{name}</h5>
@@ -9,7 +11,8 @@ export const Cardpeople = ({ name, height, mass, imgSrc }) => (
                 <strong>Altura:</strong> {height}<br />
                 <strong>Masa:</strong> {mass}<br />
             </p>
-            <a href="#" className="btn btn-primary">Ver más detalles</a>
+            <Link to={`/details/${uid}`} className="btn btn-primary">Ver más detalles</Link>
         </div>
     </div>
+    
 );
