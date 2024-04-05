@@ -24,9 +24,14 @@ export const PeopleDetails = () => {
                     <div className="card-body">
                         <h5 className="card-title">{person.result.properties.name}</h5>
                         <p className="card-text">
-                            <strong>Altura:</strong> {person.result.properties.height}<br />
-                            <strong>Masa:</strong> {person.result.properties.mass}<br />
-                            {/* Renderizar más detalles aquí si es necesario */}
+                            <strong>height:</strong> {person.result.properties.height}<br />
+                            <strong>Mass:</strong> {person.result.properties.mass}<br />
+                            <strong>Birth year:</strong> {person.result.properties.birth_year}<br />
+                            <strong>eye color:</strong> {person.result.properties.eye_color}<br />
+                            <strong>gender:</strong> {person.result.properties.gender}<br />
+                            <strong>hair color:</strong> {person.result.properties.hair_color}<br />
+                            <strong>skin color:</strong> {person.result.properties.skin_color}<br />
+                          
                         </p>
                     </div>
                 </>
