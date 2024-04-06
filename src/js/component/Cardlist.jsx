@@ -12,10 +12,15 @@ export const Cardlist = () => {
     console.log(store.listDetailsPeople);
     return (
         <div >
-            <h2>Characters</h2>
+            <h2 className="text-warning">Characters</h2>
 
             {store.listDetailsPeople.length === 0 ? (
-                <p>Loading...</p>
+                // <p className="text-warning">Loading...</p>
+                <div class="d-flex justify-content-center">
+                    <div class="spinner-border text-warning" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                </div>
             ) : (
                 <div >
 

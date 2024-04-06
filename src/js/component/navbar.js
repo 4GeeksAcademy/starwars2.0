@@ -6,18 +6,21 @@ export const Navbar = () => {
 	const { store, actions } = useContext(Context);
 	console.log(store.favorito);
 	return (
-		<nav className="navbar navbar-light bg-light mb-3">
+		<nav className="navbar navbar-dark bg-dark mb-3 d-flex justify-content-around">
 			<Link to="/">
-				<span className="navbar-brand mb-0 h1">React Boilerplate</span>
+				<img
+					style={{ objectFit: "cover" }}
+					className="navbar-brand mb-0 h1"
+					src="https://img.icons8.com/ios/50/000000/star-wars.png" />
 			</Link>
 			<div className="ml-auto">
-				
+
 
 
 				<div className="ml-auto">
 					<div className="dropdown">
 						<button
-							className="btn btn-danger dropdown-toggle"
+							className="btn btn-warning dropdown-toggle"
 							type="button"
 							data-bs-toggle="dropdown"
 							aria-expanded="false"
