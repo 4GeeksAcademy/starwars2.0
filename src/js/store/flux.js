@@ -2,7 +2,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
 			
-			listDetailsPeople:[]
+			listDetailsPeople:[],
+			favorito:[]
 		},
 		actions: {
 			
@@ -33,27 +34,37 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 			
-					
-			
-			
-			exampleFunction: () => {
-				getActions().changeColor(0, "green");
-			},
-			
-			changeColor: (index, color) => {
-				//get the store
+			guardarFavoritos(nombre) {
 				const store = getStore();
-
-				//we have to loop the entire demo array to look for the respective index
-				//and change its color
-				const demo = store.demo.map((elm, i) => {
-					if (i === index) elm.background = color;
-					return elm;
-				});
-
-				//reset the global store
-				setStore({ demo: demo });
-			}
+				const favoritos = store.favorito;
+				const newfavoritos = [...favoritos, { name: nombre, id: favoritos.length }];
+				setStore({ favorito: newfavoritos });
+		
+				const actions = getActions();
+				const item = { name: nombre, id: favoritos.length };
+		
+				// Verificar si el elemento ya está en favoritos y manejar su adición o eliminación
+				if (favoritos.some(fav => fav.name === item.name)) {
+					const updatedFavoritos = favoritos.filter(fav => fav.name !== item.name);
+					setStore({ favorito: updatedFavoritos });
+				} else {
+					setStore({
+						favorito: [...favoritos, item]
+					});
+				}
+			  },
+			  
+			  // Acción para eliminar un elemento de la lista de favoritos
+			  eliminaFavorito(id){
+				const store = getStore();
+				const fav = store.favorito;
+				const favActualizado = fav.filter((item) => item.id !== id);
+				setStore({favorito: favActualizado})
+			  }
+			
+			
+			
+			
 		}
 	};
 };
